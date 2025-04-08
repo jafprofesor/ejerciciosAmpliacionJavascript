@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 3 - GSAP</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: #4caf50;
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Animación con GSAP</h1>
+    <div class="box"></div>
+    <button id="animate">Animar</button>
+
+    <script>
+      const box = document.querySelector(".box");
+      const animateBtn = document.getElementById("animate");
+
+      animateBtn.addEventListener("click", () => {
+        gsap.to(box, {
+          duration: 1,
+          x: 200,
+          rotation: 360,
+          ease: "bounce.out",
+          yoyo: true,
+          repeat: 1,
+        });
+      });
+    </script>
+  </body>
+</html>

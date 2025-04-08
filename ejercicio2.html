@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 2 - Canvas</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+      canvas {
+        border: 1px solid #000;
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Dibujo en Canvas</h1>
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+
+    <script>
+      const canvas = document.getElementById("myCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // Dibujar un rectángulo
+      ctx.fillStyle = "red";
+      ctx.fillRect(50, 50, 100, 100);
+
+      // Dibujar un círculo
+      ctx.beginPath();
+      ctx.arc(300, 100, 50, 0, Math.PI * 2);
+      ctx.fillStyle = "blue";
+      ctx.fill();
+
+      // Dibujar una línea
+      ctx.beginPath();
+      ctx.moveTo(100, 300);
+      ctx.lineTo(300, 300);
+      ctx.strokeStyle = "green";
+      ctx.lineWidth = 5;
+      ctx.stroke();
+    </script>
+  </body>
+</html>
