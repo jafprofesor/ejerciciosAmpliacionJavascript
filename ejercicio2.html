@@ -23,14 +23,40 @@
   <body>
     <h1>Dibujo en Canvas</h1>
     <canvas id="myCanvas" width="400" height="400"></canvas>
+    <button id="pirata">Pulsa y veras...</button>
 
     <script>
       const canvas = document.getElementById("myCanvas");
+      const pirata = document.getElementById("pirata");
       const ctx = canvas.getContext("2d");
+      let abierto = true;
+      ctx.beginPath();
+      ctx.arc(100, 100, 50, 0, Math.PI * 2);
+      ctx.fillStyle = "blue";
+      ctx.fill();
+      pirata.addEventListener("click", () => {
+        if (!abierto) {
+          ctx.clearRect(0, 0, 200, 200);
+          abierto = true;
+          ctx.beginPath();
+          ctx.arc(100, 100, 50, 0, Math.PI * 2);
+          ctx.fillStyle = "blue";
+          ctx.fill();
+        } else {
+          abierto = false;
+          ctx.fillStyle = "red";
+          ctx.fillRect(50, 50, 100, 100);
 
+          ctx.beginPath();
+          ctx.moveTo(-10, 200);
+          ctx.lineTo(200, -10);
+          ctx.strokeStyle = "red";
+          ctx.lineWidth = 15;
+          ctx.stroke();
+        }
+        //ctx.clearRect(0, 0, canvas.width, canvas.height);
+      });
       // Dibujar un rectángulo
-      ctx.fillStyle = "red";
-      ctx.fillRect(50, 50, 100, 100);
 
       // Dibujar un círculo
       ctx.beginPath();

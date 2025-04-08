@@ -40,15 +40,35 @@
       const decrementBtn = document.getElementById("decrement");
 
       let count = 0;
-
+      let colores = [
+        "",
+        "blue",
+        "red",
+        "green",
+        "yellow",
+        "orange",
+        "purple",
+        "pink",
+        "brown",
+        "black",
+        "crimson",
+      ];
       incrementBtn.addEventListener("click", () => {
-        count++;
-        counterElement.textContent = count;
+        if (count < 10) {
+          count++;
+          counterElement.textContent = count;
+          //counterElement.style.color = `rgb(${count * 25}, 0, ${255 - count * 25})`;
+          counterElement.style.color = colores[count];
+        }
       });
 
       decrementBtn.addEventListener("click", () => {
-        count--;
-        counterElement.textContent = count;
+        if (count > 0) {
+          count--;
+          counterElement.textContent = count;
+          //counterElement.style.color = `rgb(${count * 25}, 0, ${255 - count * 25})`;
+          counterElement.style.color = colores[count];
+        }
       });
     </script>
   </body>
