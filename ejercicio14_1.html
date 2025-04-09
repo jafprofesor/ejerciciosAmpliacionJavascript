@@ -91,15 +91,31 @@
     </div>
 
     <script>
-      const boxes = gsap.utils.toArray(".box");
+      const box1 = document.getElementById("box1");
+      const box2 = document.getElementById("box2");
+      const box3 = document.getElementById("box3");
       const startBtn = document.getElementById("startBtn");
       const resetBtn = document.getElementById("resetBtn");
       let mainTimeline;
       let isAnimating = false;
 
       // Posición inicial
-      gsap.set(boxes, {
-        x: 0,
+      gsap.set(box1, {
+        x: 100,
+        y: 0,
+        scale: 1,
+        rotation: 0,
+        transformOrigin: "50% 50%",
+      });
+      gsap.set(box2, {
+        x: 200,
+        y: 0,
+        scale: 1,
+        rotation: 0,
+        transformOrigin: "50% 50%",
+      });
+      gsap.set(box3, {
+        x: 300,
         y: 0,
         scale: 1,
         rotation: 0,
@@ -113,47 +129,32 @@
         });
 
         // Animación sincronizada de las cajas
-        tl.to(boxes, {
-          x: "random(-300, 300)",
-          y: "random(-100, 100)",
-          rotation: "random(-180, 180)",
+        tl.to(box1, {
+          x: "100",
+          y: "0",
+          rotation: "random(-360, 360)",
           scale: "random(0.5, 1.5)",
           stagger: { amount: 0.5 },
           ease: "power1.inOut",
-        }); /*
-          .to(boxes, {
-            x: "random(-200, 200)",
-            y: "random(-100, 100)",
+        })
+          .to(box2, {
+            x: "200",
+            y: "0",
             rotation: "random(-360, 360)",
-            scale: "random(0.8, 1.2)",
+            scale: "random(0.5, 1.5)",
             stagger: { amount: 0.5 },
-            ease: "power2.inOut",
+            ease: "power1.inOut",
           })
-          .to(boxes, {
-            x: 0,
-            y: 0,
-            rotation: 360,
-            scale: 1,
+          .to(box3, {
+            x: "300",
+            y: "0",
+            rotation: "random(-1000, 1000)",
+            scale: "random(0.5, 1.5)",
             stagger: { amount: 0.5 },
-            ease: "elastic.out(1, 0.5)",
           });
-*/
+
         return tl;
       }
-
-      // Interactividad en las cajas
-      boxes.forEach((box) => {
-        box.addEventListener("click", () => {
-          if (!isAnimating) {
-            gsap.to(box, {
-              scale: 1.2,
-              rotation: "+=180",
-              duration: 0.5,
-              ease: "back.out(1.7)",
-            });
-          }
-        });
-      });
 
       startBtn.addEventListener("click", () => {
         if (isAnimating) return;
@@ -168,18 +169,32 @@
         if (mainTimeline) {
           mainTimeline.kill();
         }
-        gsap.to(boxes, {
-          x: 0,
+        // Posición inicial
+        gsap.set(box1, {
+          x: 100,
           y: 0,
           scale: 1,
           rotation: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          stagger: { amount: 0.2 },
-          onComplete: () => {
-            isAnimating = false;
-          },
+          transformOrigin: "50% 50%",
+          ease: "power2.inOut",
         });
+        gsap.set(box2, {
+          x: 200,
+          y: 0,
+          scale: 1,
+          rotation: 0,
+          transformOrigin: "50% 50%",
+          ease: "power2.inOut",
+        });
+        gsap.set(box3, {
+          x: 300,
+          y: 0,
+          scale: 1,
+          rotation: 0,
+          transformOrigin: "50% 50%",
+          ease: "power2.inOut",
+        });
+        isAnimating = false;
       });
     </script>
   </body>

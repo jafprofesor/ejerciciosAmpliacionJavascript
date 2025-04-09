@@ -36,22 +36,45 @@
           title: "Formulario de contacto",
           html: `
                     <input id="name" class="swal2-input" placeholder="Nombre">
+                    <input id="password" class="swal2-input" placeholder="Contraseña" type="password">
                     <input id="email" class="swal2-input" placeholder="Email">
                     <textarea id="message" class="swal2-textarea" placeholder="Mensaje"></textarea>
+
                 `,
           confirmButtonText: "Enviar",
           focusConfirm: false,
           preConfirm: () => {
             const name = Swal.getPopup().querySelector("#name").value;
+            const password = Swal.getPopup().querySelector("#password").value;
             const email = Swal.getPopup().querySelector("#email").value;
             const message = Swal.getPopup().querySelector("#message").value;
 
-            if (!name || !email || !message) {
-              Swal.showValidationMessage("Por favor complete todos los campos");
+            if (!name) {
+              Swal.showValidationMessage(
+                "Por favor introduzca su nombre, es obligatorio"
+              );
+              return false;
+            }
+            if (!password) {
+              Swal.showValidationMessage(
+                "Por favor introduzca su contraseña, es obligatoria"
+              );
+              return false;
+            }
+            if (!email) {
+              Swal.showValidationMessage(
+                "Por favor introduzca su email, es obligatorio"
+              );
+              return false;
+            }
+            if (!message) {
+              Swal.showValidationMessage(
+                "Por favor introduzca su mensaje, es obligatorio"
+              );
               return false;
             }
 
-            return { name, email, message };
+            return { name, password, email, message };
           },
         }).then((result) => {
           if (result.isConfirmed) {

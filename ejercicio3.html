@@ -31,7 +31,7 @@
     <script>
       const box = document.querySelector(".box");
       const animateBtn = document.getElementById("animate");
-
+      let repeticiones = 1;
       animateBtn.addEventListener("click", () => {
         gsap.to(box, {
           duration: 1,
@@ -39,7 +39,7 @@
           rotation: 360,
           ease: "bounce.out",
           yoyo: true,
-          repeat: 1,
+          repeat: repeticiones,
         });
       });
     </script>

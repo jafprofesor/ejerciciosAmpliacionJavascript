@@ -55,7 +55,7 @@
       // Formateo de teléfono
       new Cleave("#phone", {
         phone: true,
-        phoneRegionCode: "US",
+        phoneRegionCode: "ES",
       });
 
       // Formateo de fecha
@@ -66,10 +66,16 @@
       });
 
       // Formateo de tarjeta de crédito
-      new Cleave("#credit-card", {
+      var cleave = new Cleave("#credit-card", {
+        creditCard: true,
+        onCreditCardTypeChanged: function (type) {
+          // update UI ...
+        },
+      });
+      /*   new Cleave("#credit-card", {
         creditCard: true,
         delimiter: " ",
-      });
+      });*/
     </script>
   </body>
 </html>
