@@ -14,6 +14,7 @@
         justify-content: center;
         height: 100vh;
         margin: 0;
+        background-color: aquamarine;
       }
 
       h1 {
@@ -44,6 +45,7 @@
     </div>
 
     <script>
+      const bodymio = document.body;
       const textElement = document.getElementById("animated-text");
       const animateBtn = document.getElementById("animateBtn");
       const resetBtn = document.getElementById("resetBtn");
@@ -58,6 +60,13 @@
           duration: 1000,
           easing: "easeInOutQuad",
         });
+
+        anime({
+          targets: bodymio,
+          backgroundColor: "#FF2222",
+          duration: 1000,
+          easing: "easeInOutQuad",
+        });
       });
 
       resetBtn.addEventListener("click", () => {
@@ -65,9 +74,15 @@
           targets: textElement,
           translateX: 0,
           rotate: "0turn",
-          backgroundColor: "transparent",
+          backgroundColor: "rgba(255, 255, 255, 0.0)",
           color: "#000",
           duration: 500,
+          easing: "easeInOutQuad",
+        });
+        anime({
+          targets: bodymio,
+          backgroundColor: "rgba(127, 255, 212,1)",
+          duration: 1000,
           easing: "easeInOutQuad",
         });
       });
